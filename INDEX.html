@@ -19,7 +19,39 @@
     <body >
         <article>
     <header>Consistent Clocks</header>
-        <h2><p>Next DST event: March 13, 2022 @ 2:00 AM</p></h2>
+       <div id="dstclockdiv"></div>
+       <script>TIMERSCRIPT HERE
+        const DSTevent = `March 13, 2022 02:00:00`
+
+        function calcDSTCountdown(endtime){
+            const countdownnumber = Date.parse(endtime) - Date.parse(new Date());
+            const seconds = Math.floor( (total/1000) % 60 );
+            const minutes = Math.floor( (total/1000/60) % 60 );
+            const hours = Math.floor( (total/(1000*60*60)) % 24 );
+            const days = Math.floor( total/(1000*60*60*24) );
+        return {
+            total,
+            days,
+            hours,
+            minutes,
+            seconds,
+        };
+    }
+        function startDSTtimer(id, endtime) {
+            const timer = document.getElementById(id);
+            const timeinterval = setInterval(() => {
+                const t = getTimeRemaining(endtime);
+                clock.innerHTML = 'days: ' + t.days + '<br>' + 
+                                    'hours: ' + t.hours + '<br>' +
+                                    'minutes: ' + t.minutes + '<br>' +
+                                    'seconds: ' + t.seconds;
+                if (t.total <= 0) {
+                    clearInterval(timeinterval)
+                }
+            })
+        }
+        startDSTtimer("dstclockdiv", DSTevent)
+        </script>
     
         <h1></h1>
     <nav>
