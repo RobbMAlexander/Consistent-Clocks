@@ -40,7 +40,7 @@
         function startDSTtimer(id, endtime) {
             const timer = document.getElementById(id);
             const timeinterval = setInterval(() => {
-                const t = getTimeRemaining(endtime);
+                const t = calcDSTCountdown(endtime);
                 clock.innerHTML = 'days: ' + t.days + '<br>' + 
                                     'hours: ' + t.hours + '<br>' +
                                     'minutes: ' + t.minutes + '<br>' +
