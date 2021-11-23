@@ -19,7 +19,6 @@
     <body >
         <article>
     <header>Consistent Clocks</header>
-       <div id="dstclockdiv"></div>
        <script>
         const DSTevent = `March 13, 2022 02:00:00`
 
@@ -30,7 +29,7 @@
             const hours = Math.floor( (total/(1000*60*60)) % 24 );
             const days = Math.floor( total/(1000*60*60*24) );
         return {
-            total,
+            countdownnumber,
             days,
             hours,
             minutes,
@@ -52,7 +51,7 @@
         };
         startDSTtimer("dstclockdiv", DSTevent);
         </script>
-    
+    <div id="dstclockdiv"></div>
         <h1></h1>
     <nav>
 
