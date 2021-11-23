@@ -20,7 +20,7 @@
         <article>
     <header>Consistent Clocks</header>
        <div id="dstclockdiv"></div>
-       <script>TIMERSCRIPT HERE
+       <script>
         const DSTevent = `March 13, 2022 02:00:00`
 
         function calcDSTCountdown(endtime){
@@ -49,8 +49,8 @@
                     clearInterval(timeinterval)
                 }
             })
-        }
-        startDSTtimer("dstclockdiv", DSTevent)
+        };
+        startDSTtimer("dstclockdiv", DSTevent);
         </script>
     
         <h1></h1>
