@@ -30,7 +30,7 @@ h3 {
     <header>Consistent Clocks</header>
        
     
-    <h2>Anti-Daylight Savings Time resource hub</h2>
+    <h2>Anti-Daylight Saving Time resource hub</h2>
 
         <h2>Next DST Event:</h2>
             <br>
@@ -38,6 +38,9 @@ h3 {
 <br>
     <img src="Clock01.jpg" alt="01:00">
     <img src="Clock03.jpg" alt="03:00">
+
+    <p>Some States in the USA have passed legislation to maintain either Standard or Daylight Saving time:</p>
+    <h2 id="tzfactoid"></h2>
 
     <p><h2>Points Against DST</h2>
         <ul>1.Emergent public health issues (car accidents; heart attacks)</ul>
@@ -53,6 +56,27 @@ h3 {
     width="400"
     height="300">
     <script>
+//user input for quick time zone leg. list        
+    let TZ = prompt('Select a US Time Zone (in "_ST" format)', '') 
+    {
+    let tzfacts = (TZ == 'PST') ? 'In Pacific Time Zone: Washington and Oregonpassed bills to adopt permanent Daylight Saving time, but await federal legislation to make this change' :
+            (TZ == 'MST') ? 'In Mountain Time Zone: Arizona does not observe Daylight Saving Time. Utah passed legislation ending DST observation contingent on other neighboring states ceasing DST' :
+            (TZ == 'CST') ? 'In Central Time Zone: Arkansas and Tennessee passed bills to adopt permanent Daylight Saving time, but await federal legislation to make this change' :
+            (TZ == 'EST') ? 'In Eastern Time Zone: South Carolina, Delaware, Maine, and Tennessee passed bills to adopt permanent Daylight Saving time, but await federal legislation to make this change' :
+            (TZ == 'AKST') ? 'In Alaskan Time Zone: Alaska observes DST despite some state legislation in opposition' :
+            (TZ == 'AST') ? 'In Atlantic Time Zone: Puerto Rico does not observe Daylight Saving Time' :
+            (TZ == 'HST') ? 'In Hawaiian Time Zone: Hawaii is on permanent Standard Time' :
+            (TZ == 'pst') ? 'In Pacific Time Zone: Washington and Oregonpassed bills to adopt permanent Daylight Saving time, but await federal legislation to make this change' :
+            (TZ == 'mst') ? 'In Mountain Time Zone: Arizona does not observe Daylight Saving Time. Utah passed legislation ending DST observation contingent on other neighboring states ceasing DST' :
+            (TZ == 'cst') ? 'In Central Time Zone: Arkansas and Tennessee passed bills to adopt permanent Daylight Saving time, but await federal legislation to make this change' :
+            (TZ == 'est') ? 'In Eastern Time Zone: South Carolina, Delaware, Maine, and Tennessee passed bills to adopt permanent Daylight Saving time, but await federal legislation to make this change' :
+            (TZ == 'akst') ? 'In Alaskan Time Zone: Alaska observes DST despite some state legislation in opposition' :
+            (TZ == 'ast') ? 'In Atlantic Time Zone: Puerto Rico does not observe Daylight Saving Time' :
+            (TZ == 'hst') ? 'In Hawaiian Time Zone: Hawaii is on permanent Standard Time' :
+            'Try again-- not a valid USA Time Zone' ;
+     tzfactoid.innerHTML = tzfacts;
+     }
+//my (working!) countdown clock code--w/unlikely-to-be-used t=0 condition
         function calcDSTcountdown(end){
             const countdownnum = Date.parse(end) - Date.now() ;
             const seconds = Math.floor( (countdownnum/1000) % 60 );
