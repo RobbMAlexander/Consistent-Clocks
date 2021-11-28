@@ -16,13 +16,12 @@
         p { color: #A695FF;
         font-family: sans-serif}
 
-#dstcounterdiv {
+h3 {
     font-family:'Courier New', Courier, monospace;
     color: pink;
     text-align: left;
-    font-size: 20px;
-    height: 200px;
-    width: 1000px;
+    height: 50px;
+    font-size: x-large;
 }
 
           </style>
@@ -35,7 +34,7 @@
 
         <h2>Next DST Event:</h2>
             <br>
-        <div id="dstcounterdiv"></div>
+        <h3 id="dstcounter"></h3>
 <br>
     <img src="Clock01.jpg" alt="01:00">
     <img src="Clock03.jpg" alt="03:00">
@@ -55,34 +54,36 @@
     height="300">
     <script>
         function calcDSTcountdown(end){
-            const countdownnum = Date.parse(end) - Date.parse(new Date().gettime) ;
+            const countdownnum = Date.parse(end) - Date.now() ;
             const seconds = Math.floor( (countdownnum/1000) % 60 );
             const minutes = Math.floor( (countdownnum/1000/60) % 60 );
             const hours = Math.floor( (countdownnum/(1000*60*60)) % 24 );
             const days = Math.floor( (countdownnum/(1000*60*60*24)) );
+            
         return {
             countdownnum,
-            days,
-            hours,
-            minutes,
             seconds,
+            minutes,
+            hours,
+            days,
         };
     }
         function startDSTtimer(id, end) {
             const dstcounter = document.getElementById(id);
-            function tock(){
-      const t = calcDSTcountdown(end);
-    dstcounter.innerHTML = t.days + 'days,' + t.hours + 'hours, ' + t.minutes + 'minutes, ' + t.seconds + 'seconds';
-  
-  if (countdownnum <= 0) {
-    clearInterval(tick);
-        }
-    }    
-}    
+            return tock;
+            function tock() {
+            const t = calcDSTcountdown(end);
+            dstcounter.innerHTML = String(t.days) + " days, " + String(t.hours) + " hours, " + String(t.minutes) + " minutes, " + String(t.seconds) + " seconds";
+            if (t.countdownnum <= 0) {
+    clearInterval(tick);        
+        }    
+    }
+};
+
 startDSTtimer();
-var tick = setInterval(startDSTtimer,1000);
     const DSTevent = 'March 13 2022 02:00:00 GMT-0800';
-        startDSTtimer('dstcounterdiv', DSTevent);
+        startDSTtimer('dstcounter', DSTevent);    
+        var tick = setInterval(startDSTtimer('dstcounter', DSTevent), 1000);
         </script>    
 </body>
 <footer>
